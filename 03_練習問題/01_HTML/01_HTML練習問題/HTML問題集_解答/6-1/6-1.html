@@ -1,0 +1,98 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>数字当てゲーム</title>
+
+	<style>
+    	/* ここにCSSを書く */
+
+		#top{
+			margin-bottom: 5%;
+		}
+
+		#history{
+			width: 50%;
+			height: 50%;
+			overflow-y: scroll;
+		}
+
+		#status{
+			margin-top: 5%;
+		}
+	</style>
+</head>
+
+<body>
+    <!-- ここに画面に表示する内容を書く -->
+	<div id="top">0~1000の間でランダムに生成された数字を当ててください。</div>
+	<label>入力された数字</label>
+	<div id="history">
+	</div>
+	
+	<div>
+		<label id="status">数字を入力してください。</label>
+		<br>
+		<input type="text"  id="text"/>
+		<button id="button">Go</button>
+		<button id="button2">restart</button>
+	</div>
+	
+	
+	<script>
+	    // ここにJavaScriptを書く
+		let random=Math.floor(Math.random()*1001-0);//乱数
+			console.log(random);
+
+		$("button").on("click",function(){//ボタンを押したとき
+			
+		let text1=$("#text").val()//取得
+		
+				if(!text1){
+					$("#status").text("入力してください");//入力した文字が空白だった場合
+					$("#status").css("color","red");//赤色
+
+				}else if(isNaN(text1)){
+					$("#status").text("数字以外が入力されました。数字を入力してください");//入力した文字が文字以外だった場合
+					$("#status").css("color","red");//赤色
+
+				}else if(text1<random){									//入力した数字より乱数のほうが大きい
+					$("#history").append(text1+"よりも大きいです<br>");
+					$("#status").text("数字を入力してください。");
+					$("#status").css("color","black");//
+
+				}else if(text1>random){									//入力した数字より乱数のほうが小さい
+					$("#history").append(text1+"よりも小さいです<br>");
+					$("#status").text("数字を入力してください。");
+					$("#status").css("color","black");//黒色
+
+				}else if(text1=random){									//同じ
+					$("#history").append("正解です！<br>");
+					$("#status").text("おめでとうございます！");
+					$("#status").css("color","black");//黒色
+					  if(setTimeout(function(){window.confirm('もう一度行いますか？')},2000)){//2秒後にアラート
+						setTimeout(function(){alert('restartボタンを押してね')},3000);//3秒後にアラート
+							$("#status").text("数字を入力してください。");
+							$("#text").val("").focus();//テキストボックスにフォーカス
+						}
+				}
+				
+			$("#text").val("").focus();//テキストボックスにフォーカス＆テキストボックスクリーン
+
+		})
+
+		$("#button2").on("click",function(){//ボタンを押したとき
+		if(text1=random){
+			random=Math.floor(Math.random()*1001-0);//乱数
+				console.log(random);
+			$("#status").text("数字を入力してください。");
+
+		}})
+	</script>
+</body>
+
+</html>

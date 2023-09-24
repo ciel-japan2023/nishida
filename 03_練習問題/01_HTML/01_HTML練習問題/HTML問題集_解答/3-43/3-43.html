@@ -1,0 +1,36 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>練習問題</title>
+
+	<style>
+    	/* ここにCSSを書く */
+	</style>
+</head>
+
+<body>
+	<!-- ここに画面に表示する内容を書く -->
+	<div id="test"></div>
+
+
+	<script>
+		loop(3);
+		loop(5);
+		loop(7);
+		function loop(number){
+				console.log("関数loopに"+number+"を渡して実行");
+				let hosi="";
+				for(b=0;b<number;b++){
+					hosi+="＊";
+					console.log(hosi);
+				}
+			}
+	</script>
+</body>
+
+</html>

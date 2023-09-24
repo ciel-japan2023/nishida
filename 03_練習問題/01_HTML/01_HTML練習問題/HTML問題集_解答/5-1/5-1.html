@@ -1,0 +1,34 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>練習問題</title>
+
+	<style>
+    	/* ここにCSSを書く */
+		
+	</style>
+</head>
+
+<body>
+	<!-- ここに画面に表示する内容を書く -->
+	<label>入力してね<input type="text/"id="text"></label>
+	<button id="button">出力！</button>
+	<div id="answer"></div>
+
+	<script>
+	    // ここにJavaScriptを書く
+		$("#button").on("click", function(){
+			let text="";
+			text=$("#text").val(); // テキストボックスのvalue値を取得
+			$('#answer').append(text);
+		})														
+		
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>電卓</title>
+
+
+    <!-- ここに画面に表示する内容を書く -->
+	<div id="calculator">
+		<table>
+			<tr>
+				<td>
+					<input type="text" id="display" readonly />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<!-- 0ボタン -->
+					<button id="button_0">0</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<script>
+	    // ここにJavaScriptを書く
+	    
+	    var str1="";
+		// 0ボタン押下時の処理
+		$("#button_0").on("click", function(){
+			str1=str1+0;
+			console.log(str1);
+			document.getElementById("display").value = str1;
+
+			
+			
+		});
+	</script>
+</body>
+
+</html>

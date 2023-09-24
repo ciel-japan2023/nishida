@@ -1,0 +1,40 @@
+<html>
+
+<head>
+	<!-- htmlファイルと同じフォルダにあるjQuery.jsを読み込む -->
+	<script type="text/javascript" src="../common/jQuery.js"></script>
+	<!-- 文字コードをUTF-8に設定（文字化け防止） -->
+	<meta charset="UTF-8">
+	<!-- タイトル -->
+	<title>練習問題</title>
+
+	<style>
+    	/* ここにCSSを書く */
+	</style>
+</head>
+
+<body>
+	<!-- ここに画面に表示する内容を書く -->
+	<input type="text" id="num1"/>
+	+
+	<input type="text" id="num2"/>
+	<button id="button">足す</button>
+	<div id="ans"></div>
+
+
+	<script>
+	    // ここにJavaScriptを書く
+		$("#button").on("click", function(){
+			let numX=$("#num1").val();
+			let numY=$("#num2").val();
+			console.log(num1);
+			console.log(num2);
+
+			$("#ans").append(Number(numX)+Number(numY));
+			
+
+		});
+	</script>
+</body>
+
+</html>
