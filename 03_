@@ -82,10 +82,7 @@ INSERT INTO em_m_location (location_cd,location_name)
   
   SELECT * FROM Worker; # 品番在庫 
   INSERT INTO em_t_stock_item (location_cd,item_cd,item_qty)
-	 VALUES ('CN001','pc001',2),
-			('CN001','pc999',1),	
-			('CN001','sp001',3),	
-			('CN002','pc001',10),
+	 VALUES ('CN002','pc001',10),
 			('CN002','pc002',20),
 			('CN002','sp001',30),
 			('CT001','pc002',5),
@@ -107,6 +104,9 @@ INSERT INTO em_m_code (code_type,code_value,code_name)
              ('model_cd','sp','スマートフォン'),
              ('model_cd','pc','パーソナルコンピュータ');
              
-       
-             
-       
+UPDATE em_t_stock_item 
+	SET  item_qty = 50
+    WHERE location_cd = CT003
+    AND item_cd = pc001;
+    
+select * from em_t_stock_item;    

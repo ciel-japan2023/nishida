@@ -1,4 +1,4 @@
-Drop Table If Exists em_m_item;
+use nishida;
 
 Create Table
 	em_m_item(
@@ -11,7 +11,9 @@ ALTER TABLE em_m_item
 	ADD CONSTRAINT em_m_item_pk
 	PRIMARY KEY (item_cd);
 
-Comment on Table em_m_item is '•i”Ôƒ}ƒXƒ^';
-Comment on Column em_m_item.item_cd is '•i”Ô';
-Comment on Column em_m_item.item_name is '•i–¼';
-Comment on Column em_m_item.item_type is '•iŽí';
+Comment on Table em_m_item is 'Â•iÂ”Ã”Âƒ}ÂƒXÂƒ^';
+Comment on Column em_m_item.item_cd is 'Â•iÂ”Ã”';
+Comment on Column em_m_item.item_name is 'Â•iÂ–Â¼';
+Comment on Column em_m_item.item_type is 'Â•iÂŽÃ­';
+
+show tables;

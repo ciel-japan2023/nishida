@@ -1,4 +1,4 @@
-Drop Table If Exists em_m_location;
+use nishida;
 
 Create Table
 	em_m_location(
@@ -10,6 +10,8 @@ ALTER TABLE em_m_location
 	ADD CONSTRAINT em_m_location_pk
 	PRIMARY KEY (location_cd);
 
-Comment on Table em_m_location is '拠点マスタ';
-Comment on Column em_m_location.location_cd is '拠点コード';
-Comment on Column em_m_location.location_name is '拠点名';
+Comment on Table em_m_location is 'ﾂ仰陳点ﾂマﾂスﾂタ';
+Comment on Column em_m_location.location_cd is 'ﾂ仰陳点ﾂコﾂーﾂド';
+Comment on Column em_m_location.location_name is 'ﾂ仰陳点ﾂ鳴ｼ';
+
+show tables;

@@ -117,90 +117,64 @@
 
 		let display="";//文字を表示する変数
 		let count=0;//文字数を数える
-		let num=0;//比較演算子間での数を数える
 		let ans=0;
+		let num="";
+		let countC=0;//比較演算子間のカウント
 		let huragu="b";//フラグ処理　数字＝a　比較演算子＋ドット＝ｂ
-		let huragu2="x";//フラグ処理　通常はｙ　比較演算子
-
 		// 0ボタン押下時の処理
-		$("#button_0").on("click", function(){
-
-			if( count == 1 && display == "0" ){
-				count=1;//文字数カウント
-				display="0";
-				document.getElementById("display").value = display;//すでに0が初めにはいいってあるとき
+		$("#button_0").on("click", function(){			
 				
-			}else if(huragu=="a"&&huragu2=="y"){
-				count+=1;//文字数カウント
 				display+="0";
-				document.getElementById("display").value = display;//数字の後のゼロ
+				document.getElementById("display").value = display;//
 				huragu="a";
-				huragu2="y";
-				
-			}else{
-				count+=1;//文字数カウント
-				display+="0";
-				document.getElementById("display").value = display;//比較演算子の後のゼロ
-				huragu="a";
-				huragu2="x";
-			}
 			
+			count+=1;//文字数カウント
+			countC+=1;//比較演算子間のカウント
 		});
 
 		// 00ボタン押下時の処理
 		$("#button_00").on("click", function(){
 
-			if(count==0){
-				count=0;//文字数カウント
-				display="";
-				document.getElementById("display").value = display;//一番最初にゼロを押そうとしたとき		
-			}else if(display=="0"){
-				count=1;//文字数カウント
-				display="0";
-				document.getElementById("display").value = display;//すでにゼロがあるとき
-				
-			}else if(huragu=="a"){
-				count+=2;//文字数カウント
-				display+="00";
-				document.getElementById("display").value = display;//数字の後のゼロゼロ
-				huragu="a";
-				huragu2="y";
-			
-			}else{
-
-				count+=2;//文字数カウント
-				display+="00";
-				document.getElementById("display").value = display;//比較演算子の後のゼロゼロ
-				huragu="a";
-				huragu2="y";
-
-			}
-
-			
-
+			count+=2;//文字数カウント
+			display+="00";
+			document.getElementById("display").value = display;//文字を表示
+			huragu="a";
+			countC+=2;//比較演算子間のカウント
 			
 		});
 
 		// ドットボタン押下時の処理
 		$("#button_dot").on("click", function(){
 
-			
-			if(count==0){
+
+			if(display.substr( count-1, count )=="/"||display.substr( count-1, count )=="*"||
+							display.substr( count-1, count )=="+"||display.substr( count-1, count )=="-"||display.substr( count-1, count )=="."){
+
+			}else if(display.substr(-countC).indexOf(".")!==-1){
+
+
+			}else if(count==0){
 				count=2;//文字数カウント
+				countC+=2;//比較演算子間のカウント
 				display="0.";
-				document.getElementById("display").value = display;//一番最初にどっと
+				document.getElementById("display").value = display;//文字を表示	
 				huragu="b";
-				
+					
 			}else if(huragu=="a"){
 
 				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+=".";
-				document.getElementById("display").value = display;//
+				document.getElementById("display").value = display;//文字を表示	
 				huragu="b";
-					
-			}
-		
+			}else if(huragu=="b"){
+
 			
+			}
+			
+		
+		
+		
 		});
 
 		// 1ボタン押下時の処理
@@ -208,16 +182,18 @@
 
 			if( count == 1 && display == "0" ){	
 				display="1";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="1";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+			
 		});
 
 		// 2ボタン押下時の処理
@@ -225,16 +201,18 @@
 
 			if( count == 1 && display == "0" ){	
 				display="2";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="2";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 			
 			huragu="a";
-			huragu2="y";
+			
 
 		});
 
@@ -243,16 +221,18 @@
 
 			if( count == 1 && display == "0" ){	
 				display="3";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="3";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+			
 		});
 
 		// 4ボタン押下時の処理
@@ -262,16 +242,18 @@
 
 			if( count == 1 && display == "0" ){	
 				display="4";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="4";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+		
 		});
 
 		// 5ボタン押下時の処理
@@ -281,16 +263,18 @@
 
 			if( count == 1 && display == "0" ){	
 				display="5";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="5";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+			
 		});
 
 		// 6ボタン押下時の処理
@@ -300,16 +284,18 @@
 
 			if( count == 1 && display == "0" ){	
 				display="6";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="6";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+			
 		});
 
 		// 7ボタン押下時の処理
@@ -318,53 +304,56 @@
 			
 			if( count == 1 && display == "0" ){	
 				display="7";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウン
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="7";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+			
 		});
 
 		// 8ボタン押下時の処理
-		$("#button_8").on("click", function(){
-
-			
+		$("#button_8").on("click", function(){			
 
 			if( count == 1 && display == "0" ){	
 				display="8";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="8";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+			
 		});
 
 		// 9ボタン押下時の処理
 		$("#button_9").on("click", function(){
-
 			
 			if( count == 1 && display == "0" ){	
 				display="9";			
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				document.getElementById("display").value = display;//文字を表示	
 			}else{
-				count=1;//文字数カウント
+				count+=1;//文字数カウント
+				countC+=1;//比較演算子間のカウント
 				display+="9";
 				document.getElementById("display").value = display;//文字を表示		
 			}
 
 			huragu="a";
-			huragu2="y";
+			
 		});
 
 		// 足し算ボタン押下時の処理
@@ -372,17 +361,23 @@
 
 			if(huragu=="b"){
 				
+			}else if(display.substr( count-1, count )=="+"||display.substr( count-1, count )=="-"
+						||display.substr( count-1, count )=="*"||display.substr( count-1, count )=="/"||display.substr( count-1, count )=="."){
+				
+				
 			}else if (count==0){
-				count=0;//文字数カウント
+				count=0;//文字数カウン
+				countC=0;//比較演算子間のカウント
 				display="";
 				document.getElementById("display").value = display;//文字を表示		
 
 			}else{
 				count+=1;//文字数カウント
+				countC=0;//比較演算子間のカウント
 				display+="+";
 				document.getElementById("display").value = display;//文字を表示
 				huragu="b";
-				huragu2="x";
+		
 			}
 
 			
@@ -393,17 +388,22 @@
 
 			if(huragu=="b"){
 
+
+			}else if(display.substr( count-1, count )=="-"||display.substr( count-1, count )=="+"
+						||display.substr( count-1, count )=="*"||display.substr( count-1, count )=="/"||display.substr( count-1, count )=="."){
+				
 			}else if(count==0){
 				count=0;//文字数カウント
+				countC=0;//比較演算子間のカウント
 				display="";
 				document.getElementById("display").value = display;//文字を表示	
 
 			}else{
 				count+=1;//文字数カウント
+				countC=0;//比較演算子間のカウント
 				display+="-";
 				document.getElementById("display").value = display;//文字を表示
 				huragu="b";
-				huragu2="x";
 			}
 
 			
@@ -414,16 +414,22 @@
 
 			if(huragu=="b"){
 
+			}else if(display.substr( count-1, count )=="*"||display.substr( count-1, count )=="+"
+						||display.substr( count-1, count )=="-"||display.substr( count-1, count )=="/"||display.substr( count-1, count )=="."){
+
+
 			}else if(count==0){
 				count=0;//文字数カウント
+				countC=0;//比較演算子間のカウント
 				display="";
 				document.getElementById("display").value = display;//文字を表示		
 			}else{
 				count+=1;//文字数カウント
+				countC=0;//比較演算子間のカウント
 				display+="*";
 				document.getElementById("display").value = display;//文字を表示
 				huragu="b";
-				huragu2="x";
+			
 			}
 
 			
@@ -434,16 +440,22 @@
 
 			if(huragu=="b"){
 
+			
+			}else if(display.substr( count-1, count )=="/"||display.substr( count-1, count )=="*"||
+							display.substr( count-1, count )=="+"||display.substr( count-1, count )=="-"||display.substr( count-1, count )=="."){
+
 			}else if(count==0){
 				count=0;//文字数カウント
+				countC=0;//比較演算子間のカウント
 				display="";
 				document.getElementById("display").value = display;//文字を表示		
+
 			}else{
 				count+=1;//文字数カウント
+				countC=0;//比較演算子間のカウント
 				display+="/";
 				document.getElementById("display").value = display;//文字を表示
 				huragu="b";
-				huragu2="x";
 			}
 
 			
@@ -451,46 +463,53 @@
 
 		// 計算ボタン押下時の処理
 		$("#button_calculation").on("click", function(){
+
 			if(huragu=="b"){
 			
 			}else if(count==0){
 				count=0;
+				countC=0;//比較演算子間のカウント
 				display="";
 				huragu="b"
 			}else{
-			ams=eval( display )
-			document.getElementById("display").value = ams;//文字を表示
-			display=ams;
-			count=ams.langth;//文字数カウント
-			huragu="a";
-			huragu2="y";
+				ams=eval(display);
+				document.getElementById("display").value =  Math.round(ams* 1000000) / 1000000 ;//文字を表示
+				count=0;//文字数カウント
+				display="";
+				huragu="a";
+				countC=0;//比較演算子間のカウント
 			}
 			
 		});
 
 		// 戻るボタン押下時の処理
 		$("#button_back").on("click", function(){
+
 			display=display.substring(0,count-1);//画面から一文字消す
+		
+			document.getElementById("display").value = display;//文字を表示(一文字消す)
 
 			count-=1;//文字数カウント
+			countC-=1;//比較演算子間のカウント
 
-			document.getElementById("display").value = display;//文字を表示(一文字消す)
+			huragu="a";
 
 		});
 		
 		// クリアボタン押下時の処理
 		$("#button_c").on("click", function(){
-			display=ams;
-			count=ams.langth;
+			
 		});
 
 		// オールクリアボタン押下時の処理
 		$("#button_ac").on("click", function(){
+
 			count=0;//文字数カウント
+			countC=0;//比較演算子間のカウント
 			display="";
 			document.getElementById("display").value = display;//文字全消去
 			huragu="b";
-			huragu2="y";
+
 		});
 		
 	</script>
